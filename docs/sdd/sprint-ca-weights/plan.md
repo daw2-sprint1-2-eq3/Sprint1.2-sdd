@@ -1,7 +1,10 @@
 # Plan — Sprint CA weight validation
 
 Implements: [spec.md](spec.md)  
-Tool for generation: Cursor (see [docs/ai-agents-comparison.md](../../ai-agents-comparison.md))
+Tool for generation: OpenAI Codex (see [docs/ai-agents-comparison.md](../../ai-agents-comparison.md))
+
+The initial draft named Cursor. The team uses VS Code, so this execution uses
+Codex, which is available in the team's VS Code setup.
 
 ## 1. File layout
 

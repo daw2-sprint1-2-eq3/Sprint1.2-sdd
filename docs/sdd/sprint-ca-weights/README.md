@@ -14,8 +14,8 @@ outcome (RA) in one sprint: they must sum to **100**.
 | --- | --- | --- |
 | 1 | [spec.md](spec.md) | done |
 | 2 | [plan.md](plan.md) | done |
-| 3 | Prompts in [prompts/](prompts/) | done |
-| 4 | Code in [generated/](generated/) | done |
+| 3 | [Generation prompt](prompts/01-generate-validator.md) | done |
+| 4 | [Validator](generated/SprintCaWeightValidator.php) and [tests](generated/test_sprint_ca_weights.php) | done |
 | 5 | [review.md](review.md) | done |
 | 6 | [conclusions.md](conclusions.md) | done |
 

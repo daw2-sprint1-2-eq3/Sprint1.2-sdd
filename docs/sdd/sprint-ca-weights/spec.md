@@ -1,6 +1,6 @@
 # Spec — Sprint CA weight validation (SDD slice)
 
-Status: draft for issue #5  
+Status: implemented and verified for issue #5
 Author: Team 3  
 Date: 2026-11-04
 
@@ -78,7 +78,7 @@ Messages must be stable enough for tests (exact string or predictable substring)
 
 ## 9. Done when
 
-- [ ] `plan.md` lists files and steps.
-- [ ] Prompts and generated code implement this spec.
-- [ ] Tests cover section 7.
-- [ ] Human review and conclusions recorded.
+- [x] `plan.md` lists files and steps.
+- [x] Prompts and generated code implement this spec.
+- [x] Tests cover section 7.
+- [x] Human review and conclusions recorded.
