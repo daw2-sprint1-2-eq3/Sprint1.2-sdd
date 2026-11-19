@@ -1,7 +1,10 @@
 # Plan — Sprint CA weight validation
 
 Implements: [spec.md](spec.md)  
-Tool for generation: Cursor (see [docs/ai-agents-comparison.md](../../ai-agents-comparison.md))
+Tool for generation: OpenAI Codex (see [docs/ai-agents-comparison.md](../../ai-agents-comparison.md))
+
+The initial draft named Cursor. The team uses VS Code, so this execution uses
+Codex, which is available in the team's VS Code setup.
 
 ## 1. File layout
 
@@ -50,11 +53,11 @@ All three must succeed before review.
 
 ## 4. Definition of done (this slice)
 
-- [ ] Both functions match spec §4–§5.
-- [ ] Test script passes locally.
-- [ ] Prompt evidence file exists.
-- [ ] `review.md` lists manual checks and any code edits after the agent.
-- [ ] `conclusions.md` closes the SDD loop for issue #5.
+- [x] Both functions match spec §4–§5.
+- [x] Test script passes locally.
+- [x] Prompt evidence file exists.
+- [x] `review.md` lists manual checks and any code edits after the agent.
+- [x] `conclusions.md` closes the SDD loop for issue #5.
 
 ## 5. Integration with the real app (future, not here)
 
