@@ -6,3 +6,4 @@ The grade-management application stays in
 Do not copy that application here.
 
 - [AI coding agents comparison](docs/ai-agents-comparison.md)
+- [AI-assisted development methodology](docs/ai-assisted-methodology.md)
