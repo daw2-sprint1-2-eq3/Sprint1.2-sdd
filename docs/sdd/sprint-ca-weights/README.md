@@ -12,12 +12,12 @@ outcome (RA) in one sprint: they must sum to **100**.
 
 | Step | Artifact | Status |
 | --- | --- | --- |
-| 1 | [spec.md](spec.md) | pending |
-| 2 | [plan.md](plan.md) | pending |
-| 3 | Prompts in [prompts/](prompts/) | pending |
-| 4 | Code in [generated/](generated/) | pending |
-| 5 | [review.md](review.md) | pending |
-| 6 | [conclusions.md](conclusions.md) | pending |
+| 1 | [spec.md](spec.md) | done |
+| 2 | [plan.md](plan.md) | done |
+| 3 | Prompts in [prompts/](prompts/) | done |
+| 4 | Code in [generated/](generated/) | done |
+| 5 | [review.md](review.md) | done |
+| 6 | [conclusions.md](conclusions.md) | done |
 
 ## Domain reference (read-only)
 
