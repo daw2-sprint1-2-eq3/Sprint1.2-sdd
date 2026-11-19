@@ -1,25 +1,25 @@
 # Review — Sprint CA weight validation
 
-Reviewer: Adrià Gisbert (issue assignee), with Codex assistance
+Reviewer: YoHerman
 Date: 2026-11-19
+Reviewed files: `generated/SprintCaWeightValidator.php`, `generated/test_sprint_ca_weights.php`
+Spec: [spec.md](spec.md)
 
-## Manual checks
+## What I checked
 
-- Compared both public function signatures with the plan.
-- Checked that every value is confirmed to be an integer before it is summed.
-- Checked the inclusive 0–100 range, the empty-map failure, and the total of 100.
-- Checked that validation errors include the RA identifier when applicable.
-- Checked the standalone test covers each case in spec section 7 and the helper's
-  type and range checks.
-- Checked the PHP array duplicate-key behavior is documented for callers.
-- Confirmed the files contain no framework, database, application copy, secrets,
-  or credentials.
-
-## Changes after generation
-
-No code changes were needed after the review.
+- [x] Each weight is an int from 0 to 100. Anything else throws `InvalidArgumentException`.
+- [x] An empty map fails, and the message includes the RA id.
+- [x] A non-empty map is valid only when the weights sum to 100. The message shows the expected total and the actual total.
+- [x] The comment states that a repeated criterion id keeps the last value.
+- [x] The test script covers every row of spec section 7.
+- [x] `php -l` on both files and `php generated/test_sprint_ca_weights.php` from the repo root.
 
 ## Result
 
-All listed checks passed with PHP 8.4.13. Both lint commands succeeded and the
-standalone test printed OK.
+SPEC MET.
+
+Each weight must be an integer from 0 to 100, an empty map fails with the RA id in the message, and any other total than 100 fails with the expected and actual sums. The test script covers spec section 7.
+
+## Edits after the agent
+
+None.

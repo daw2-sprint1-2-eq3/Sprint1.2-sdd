@@ -1,14 +1,17 @@
 # Conclusions — Sprint CA weight validation
 
-Codex implemented the slice directly from the spec and plan. The small
-standalone PHP functions were straightforward to generate and review. The
-acceptance cases and extra helper checks run without a framework or database.
+Author: YoHerman
+Date: 2026-11-19
+Issue: Sprint1.2-app #5
 
-The SDD trail kept the scope limited to validating CA weights for one RA in one
-sprint. It does not implement the editor, persistence, grade calculation, or
-application integration. The real application remains in Sprint1.2-app.
+## What worked
 
-For this execution, the plan was changed from Cursor to Codex because the team
-uses VS Code and Codex is available in that setup. The prompt, generated files,
-review, and validation results are stored alongside the spec and plan so the
-work can be repeated or reviewed later.
+The spec fixed the function names and the six cases before any PHP was written. The test script checks those cases and exits 0 only when the messages match.
+
+## Limits
+
+This slice does not save weights or open the weight window in Sprint1.2-app. The comparison of tools is still open in `docs/ai-agents-comparison.md`.
+
+## Close of this slice
+
+The evidence trail for issue #5 is spec, plan, prompt, generated code, review, and this note. The grade application was not copied here.

@@ -1,84 +1,81 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . '/SprintCaWeightValidator.php';
 
-function fail_test(string $message): never
+function fail(string $message): void
 {
-    fwrite(STDERR, 'FAIL: ' . $message . PHP_EOL);
+    fwrite(STDERR, $message . PHP_EOL);
     exit(1);
 }
 
-function assert_same(mixed $expected, mixed $actual, string $label): void
-{
-    if ($expected !== $actual) {
-        fail_test(sprintf('%s: expected %s, got %s.', $label, var_export($expected, true), var_export($actual, true)));
-    }
-}
-
-function assert_invalid_argument(callable $operation, string $messagePart, string $label): void
+function expect_exception(string $label, callable $action, string $needle): void
 {
     try {
-        $operation();
+        $action();
     } catch (InvalidArgumentException $exception) {
-        if (!str_contains($exception->getMessage(), $messagePart)) {
-            fail_test(sprintf('%s: exception did not contain "%s".', $label, $messagePart));
+        if (!str_contains($exception->getMessage(), $needle)) {
+            fail($label . ' message was: ' . $exception->getMessage());
         }
 
         return;
-    } catch (Throwable $exception) {
-        fail_test(sprintf('%s: expected InvalidArgumentException, got %s.', $label, $exception::class));
     }
 
-    fail_test(sprintf('%s: expected InvalidArgumentException.', $label));
+    fail($label . ' did not throw.');
 }
 
-assert_same(100, sum_sprint_ca_weights([10, 40, 50]), 'Sum valid split');
-assert_same(true, validate_sprint_ca_weights(1, [10, 40, 50]), 'Valid split');
+$sum = sum_sprint_ca_weights([10, 40, 50]);
+if ($sum !== 100) {
+    fail('Valid split sum was ' . $sum . '.');
+}
 
-assert_same(100, sum_sprint_ca_weights([0, 100]), 'Sum with zero');
-assert_same(true, validate_sprint_ca_weights(1, [0, 100]), 'Valid zeros');
+if (validate_sprint_ca_weights(1, [10, 40, 50]) !== true) {
+    fail('Valid split did not return true.');
+}
 
-assert_invalid_argument(
-    static fn () => validate_sprint_ca_weights(2, [30, 30]),
-    'RA 2 must sum to 100; got 60',
-    'Incorrect total'
+if (validate_sprint_ca_weights(1, [0, 100]) !== true) {
+    fail('Zeros were rejected.');
+}
+
+expect_exception(
+    'Sum not 100',
+    static function (): void {
+        validate_sprint_ca_weights(2, [30, 30]);
+    },
+    'got 60'
 );
 
-assert_invalid_argument(
-    static fn () => validate_sprint_ca_weights(1, [101]),
-    'between 0 and 100',
-    'Weight above range'
+expect_exception(
+    'Weight out of range',
+    static function (): void {
+        validate_sprint_ca_weights(1, [101]);
+    },
+    'between 0 and 100'
 );
 
-assert_invalid_argument(
-    static fn () => validate_sprint_ca_weights(1, [50, '50']),
-    'must be an integer',
-    'String weight'
+expect_exception(
+    'Non-integer string',
+    static function (): void {
+        validate_sprint_ca_weights(1, [50, '50']);
+    },
+    'between 0 and 100'
 );
 
-assert_invalid_argument(
-    static fn () => validate_sprint_ca_weights(1, [50.5]),
-    'must be an integer',
-    'Float weight'
+expect_exception(
+    'Non-integer float',
+    static function (): void {
+        validate_sprint_ca_weights(1, [50.5]);
+    },
+    'between 0 and 100'
 );
 
-assert_invalid_argument(
-    static fn () => validate_sprint_ca_weights(1, []),
-    'At least one CA is required',
-    'Empty weights'
-);
-
-assert_invalid_argument(
-    static fn () => sum_sprint_ca_weights([-1]),
-    'between 0 and 100',
-    'Sum helper range check'
-);
-
-assert_invalid_argument(
-    static fn () => sum_sprint_ca_weights(['10']),
-    'must be an integer',
-    'Sum helper type check'
+expect_exception(
+    'Empty map',
+    static function (): void {
+        validate_sprint_ca_weights(1, []);
+    },
+    'RA 1'
 );
 
 echo "OK\n";

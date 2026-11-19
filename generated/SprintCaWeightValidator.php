@@ -1,30 +1,22 @@
 <?php
+
 declare(strict_types=1);
 
 /**
- * Add assessment-criterion weights after validating their values.
- * PHP associative array keys are unique; callers must not rely on duplicate IDs.
+ * Sprint CA weight checks for one learning outcome (RA).
  *
- * @param array<int|string, mixed> $weights
+ * Callers must not rely on duplicate criterion ids. A PHP associative
+ * array keeps only the last value for a repeated key.
  */
+
 function sum_sprint_ca_weights(array $weights): int
 {
     $sum = 0;
 
-    foreach ($weights as $criterionId => $weight) {
-        if (!is_int($weight)) {
+    foreach ($weights as $weight) {
+        if (!is_int($weight) || $weight < 0 || $weight > 100) {
             throw new InvalidArgumentException(
-                sprintf('Weight for criterion "%s" must be an integer.', (string) $criterionId)
-            );
-        }
-
-        if ($weight < 0 || $weight > 100) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    'Weight for criterion "%s" must be between 0 and 100 inclusive; got %d.',
-                    (string) $criterionId,
-                    $weight
-                )
+                'Weight must be an integer between 0 and 100.'
             );
         }
 
@@ -34,16 +26,11 @@ function sum_sprint_ca_weights(array $weights): int
     return $sum;
 }
 
-/**
- * Validate that a learning outcome's criterion weights total exactly 100.
- *
- * @param array<int|string, mixed> $weights
- */
 function validate_sprint_ca_weights(int|string $raId, array $weights): true
 {
     if ($weights === []) {
         throw new InvalidArgumentException(
-            sprintf('At least one CA is required when configuring weights for RA %s.', (string) $raId)
+            'RA ' . $raId . ' requires at least one assessment criterion.'
         );
     }
 
@@ -51,7 +38,7 @@ function validate_sprint_ca_weights(int|string $raId, array $weights): true
 
     if ($sum !== 100) {
         throw new InvalidArgumentException(
-            sprintf('Weights for RA %s must sum to 100; got %d.', (string) $raId, $sum)
+            'RA ' . $raId . ' weights must sum to 100, got ' . $sum . '.'
         );
     }
 
