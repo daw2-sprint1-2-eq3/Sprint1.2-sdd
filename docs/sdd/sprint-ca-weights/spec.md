@@ -15,7 +15,7 @@ It implements only the **validation rules** that the real app will rely on when
 saving weights.
 
 Product reference (read-only):
-[Sprint1.2-app — requirements §8](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app/blob/main/docs/requirements-and-decisions.md)
+[requirements §8](../../requirements-and-decisions.md)
 (`sprint_criterion.weight`: sum 100 per RA and sprint).
 
 ## 2. Users and context

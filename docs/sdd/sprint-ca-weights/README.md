@@ -15,12 +15,10 @@ outcome (RA) in one sprint: they must sum to **100**.
 | 1 | [spec.md](spec.md) | done |
 | 2 | [plan.md](plan.md) | done |
 | 3 | [Generation prompt](prompts/01-generate-validator.md) | done |
-| 4 | [Validator](generated/SprintCaWeightValidator.php) and [tests](generated/test_sprint_ca_weights.php) | done |
+| 4 | [Validator](../../../generated/SprintCaWeightValidator.php) and [tests](../../../generated/test_sprint_ca_weights.php) | done |
 | 5 | [review.md](review.md) | done |
 | 6 | [conclusions.md](conclusions.md) | done |
 
 ## Domain reference (read-only)
 
-Weights rules in the real product are documented in the app repo
-(`docs/requirements-and-decisions.md`, weight sections). This repository only
-implements and tests the small validation slice above.
+Weights rules are in [`docs/requirements-and-decisions.md`](../../requirements-and-decisions.md) section 8. This slice only tests that validation.

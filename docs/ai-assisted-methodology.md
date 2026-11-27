@@ -10,10 +10,10 @@ An agent may draft code. A person decides, reviews and merges.
 
 | Work | Repository | Rule |
 | --- | --- | --- |
-| Grade application (PHP, schema, tests, UI) | [Sprint1.2-app](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app) | Follow [`AGENTS.md`](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app/blob/main/AGENTS.md). Do not copy that application into this repo. |
+| Grade application (PHP, schema, tests, UI) | [Sprint1.2-app](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app) | Follow [`AGENTS.md`](../AGENTS.md) in this repo. Do not copy that application into this repo. |
 | Tool comparison | This repo, [`docs/ai-agents-comparison.md`](ai-agents-comparison.md) | Update the comparison before a slice uses a different tool. |
 | Spec, plan, prompt, generated code, review, conclusions | This repo, under `docs/sdd/<slice>/` and `generated/` | One small feature per slice. School-level PHP only. |
-| Product rules (weights, class group, stored grades) | App repo, `docs/requirements-and-decisions.md` section 8 | If the brief is silent, stop and ask. Then record the decision there. |
+| Product rules (weights, class group, stored grades) | This repo, [`docs/requirements-and-decisions.md`](requirements-and-decisions.md) section 8 | If the brief is silent, stop and ask. Then record the decision there. Replace section 8 when the product is not the grade app. |
 
 ## 2. Tools
 
@@ -78,7 +78,7 @@ AI-generated code is unreviewed code. It uses the same pull-request review as an
 
 - **One issue = one branch = one pull request.** Branch name: `issue/<number>-<short-slug>`.
 - This evidence repo: branch from `main`, pull request to `main`.
-- The app repo: code targets `develop`. A documentation-only change may target `main`. Commands and review rules: [`docs/github-workflow.md`](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app/blob/main/docs/github-workflow.md) and [`CONTRIBUTING.md`](https://github.com/daw2-sprint1-2-eq3/Sprint1.2-app/blob/main/CONTRIBUTING.md).
+- A product repo: code targets `develop`. A documentation-only change may target `main`. Commands and review rules: [`docs/github-workflow.md`](github-workflow.md) and [`CONTRIBUTING.md`](../CONTRIBUTING.md). This evidence repo branches from `main`.
 - Commit in English, with the issue number. Example: `docs: add the AI-assisted methodology #6`.
 - Pull request body includes `Closes #N` (or `Closes daw2-sprint1-2-eq3/Sprint1.2-app#N` from this repo).
 - Open the pull request as a draft. Mark it ready when the checks in section 4 pass.
